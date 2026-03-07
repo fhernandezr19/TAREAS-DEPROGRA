@@ -1,0 +1,43 @@
+//Tareas - Programación 1
+
+Ejercicio 1: Convertir Binario a Decimal:
+
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+int main() {
+
+    string num;
+    cout<<"Ingrese un numero binario: ";
+    cin>>num;
+
+    int decimal = 0;
+    int largo = num.length();
+
+    for(int i = 0; i < largo; i++)
+    {
+        char digito = num[largo - i - 1];
+
+        if(digito == '1')
+        {
+            decimal = decimal + pow(2,i);
+        }
+        else
+        {
+        
+        }
+    }
+
+    cout<<"El numer0 es: "<<decimal<<endl;
+
+    return 0;
+}      
+
+
+//Ejercicio 2: Arreglo Descendente:
+
+
+
+
