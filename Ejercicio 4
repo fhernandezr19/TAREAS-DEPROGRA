@@ -1,0 +1,44 @@
+Ejercicio 4: Invertir Parte de una Cadena
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(){
+
+    string texto;
+    int a;
+    int b;
+
+    cout << "Ingrese texto: ";
+    cin.ignore();
+    getline(cin, texto);
+
+    cout << "Ingrese a: ";
+    cin >> a;
+
+    cout << "Ingrese b: ";
+    cin >> b;
+
+    int tam = texto.length(); // tamaño del texto
+
+    // revisar que b no sobreparse
+    if(b >= tam){
+        b = tam - 1;
+    }
+
+    // invertir el entero
+    while(a < b){
+
+        char letra = texto[a];
+        texto[a] = texto[b];
+        texto[b] = letra;
+
+        a = a + 1;
+        b = b - 1;
+    }
+
+    cout << "Texto final: " << texto << endl;
+
+    return 0;
+}
