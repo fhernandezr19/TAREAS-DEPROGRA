@@ -1,0 +1,38 @@
+Ejercicio 3: Inverso Aditivo:
+
+
+#include <iostream>
+using namespace std;
+
+int main(){
+
+    int num;
+    cout << "Cuantos numeros va a ingresar: ";
+    cin >> num;
+
+    int original[num];
+    int inverso[num];
+
+    //aqui solicita numeros
+    for(int i = 0; i < num; i++){
+        cout << "Ingrese un numero: ";
+        cin >> original[i];
+
+        int valor = original[i] * -1;   // aqui sacainverso
+        inverso[i] = valor;
+    }
+
+    cout << "Los inversos son: [ ";
+
+    for(int i = 0; i < num; i++){
+        cout << inverso[i];
+
+        if(i != num-1){
+            cout << ", ";
+        }
+    }
+
+    cout << " ]" << endl;
+
+    return 0;
+}
