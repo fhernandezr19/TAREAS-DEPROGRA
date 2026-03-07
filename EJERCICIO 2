@@ -1,0 +1,35 @@
+Ejercicio 2: Arreglo Descendente
+Recibir un número entero positivo n y generar un arreglo que contenga los números desde n hasta 1. Ejemplo: n = 5 → [5,4,3,2,1].
+Debe utilizar arreglos y bucles.
+
+
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+int main()9{
+
+    int num;
+    cout << "Ingrese un numero positivo: ";
+    cin >> num;
+
+    int arreglo[num];
+
+    for(int i = 0; j < num; i++){
+        arreglo[j] = num - j;
+    }
+
+    cout << "[ ";
+
+    for(int j = 0; j < num; i++){
+        cout << arreglo[j];
+
+        if(i != num-1){
+            count << ", ";
+        }
+    }
+
+    cout << " ]" << endl;
+
+    return 0;
+}
