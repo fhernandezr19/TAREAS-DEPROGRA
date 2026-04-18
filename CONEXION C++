@@ -1,0 +1,54 @@
+#include <iostream>
+#include <sql.h>
+#include <sqlext.h>
+
+using namespace std;
+
+int main() {
+    // 1. CREAR CONEXIÓN
+    // Eguardan la configuración de la conexión
+    SQLHENV entorno;        
+    SQLHDBC conexion;      
+    SQLRETURN resultado;   
+    2. CREAR EL AMBIENTE 
+    SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &entorno);
+    
+    3. DECIR LA VERSIÓN DE ODBC 
+    SQLSetEnvAttr(entorno, SQL_ATTR_ODBC_VERSION, (SQLPOINTER)SQL_OV_ODBC3, 0);
+
+    4. PREPARAR LA CONEXIÓN
+    SQLAllocHandle(SQL_HANDLE_DBC, entorno, &conexion);
+
+    /5. LA CADENA DE CONEXIÓN //La dirección de la casa
+
+    SQLCHAR* cadenaConexion = (SQLCHAR*)"Driver={ODBC Driver 18 for SQL Server};"
+                              "Server=localhost;" 
+                              "Database=master;"
+                              "UID=sa;"
+                              "PWD=TuPassword123!;"
+                              "Encrypt=yes;"
+                              "TrustServerCertificate=yes;";
+
+    cout << "Conectando a la base de datos... por favor espera." << endl;
+
+    6. INTENTAR CONECTAR
+    resultado = SQLDriverConnect(conexion, NULL, cadenaConexion, SQL_NTS, NULL, 0, NULL, SQL_DRIVER_NOPROMPT);
+
+    7. VERIFICAR SI FUNCIONÓ
+    if (resultado == SQL_SUCCESS || resultado == SQL_SUCCESS_WITH_INFO) {
+        cout << "****************************************" << endl;
+        cout <<  Te has conectado correctamente." << endl;
+        cout << "****************************************" << endl;
+    } else {
+        cout << "EROR.:" << endl;
+        cout << "1. El password sea correcto." << endl;
+        cout << "2. El motor de base de datos esté encendido." << endl;
+    }
+
+   8. CERRAR TODO 
+    SQLDisconnect(conexion);
+    SQLFreeHandle(SQL_HANDLE_DBC, conexion);
+    SQLFreeHandle(SQL_HANDLE_ENV, entorno);
+
+    return 0;
+}
